@@ -45,32 +45,62 @@ const Contacts = ({ userId, onClose }) => {
     setSearchQuery(query);
   };
 
+
   const handleCallUser = () => {
     const callLog = {
       caller_id: userId,
       receiver_id: selectedContact.id,
     };
 
-    // Send POST request to /call-log
-    // fetch("http://127.0.0.1:5000/call-log", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${accessToken}`,
-    //   },
-    //   body: JSON.stringify(callLog),
-    // })
-    //   .then((response) => response.json())
-    //   .then(() => {
-    //     // Navigate to the video call page with the receiver's ID
-    //     navigate(`/video/${selectedContact.id}`);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error saving call log:", error);
-    //     alert("Failed to save call log.");
-    //   });
-    navigate(`/video/${selectedContact.id}`);
+    const callListener = {
+      initiator_id: userId,
+      receiver_id: selectedContact.id,
+      status: "ringing", // Initial status, could be updated to "on call" later
+    };
+
+    // First, post the CallListener data
+    fetch("http://127.0.0.1:5000/call-listener", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(callListener),
+    })
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(`Failed to save call listener: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(() => {
+        // Then, post the CallLog data
+        return fetch("http://127.0.0.1:5000/call-log", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify(callLog),
+        });
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to save call log: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(() => {
+        // Navigate to the video call page with the receiver's ID
+        // navigate(`/video/${selectedContact.id}`);
+      })
+      .catch((error) => {
+        console.error("Error saving call data:", error);
+        alert("Failed to save call data.");
+      });
   };
+
 
   const filteredContacts = contacts.filter(
     (contact) =>

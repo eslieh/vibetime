@@ -30,3 +30,15 @@ class Contact(db.Model):
 
     def __repr__(self):
         return f'<Contact {self.contact_name}>'
+    
+class CallListener(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    initiator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    receiver_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    status = db.Column(db.String(50), nullable=False)  # 'ringing', 'on call', etc.
+    
+    initiator = db.relationship('User', foreign_keys=[initiator_id], backref=db.backref('initiated_calls', lazy=True))
+    receiver = db.relationship('User', foreign_keys=[receiver_id], backref=db.backref('received_calls', lazy=True))
+
+    def __repr__(self):
+        return f'<CallListener {self.initiator_id} -> {self.receiver_id}, Status: {self.status}>'

@@ -7,8 +7,14 @@ import ParentComponent from "../components/ParentalComponent";
 const Index = () => {
   const [showContacts, setShowContacts] = useState(false); // State to toggle Contacts
   const [userId, setUserId] = useState(null); // To pass user_id dynamically
-
+  const [isRinging, setIsRinging] = useState(false); // Initially no incoming call
+  const [incomingCall, setIncomingCall] = useState(null); // To store incoming call details
   const videoRef = useRef(null);
+
+  const handleDecline = () => {
+    setIsRinging(false); // Hide the Ringer component when declined
+  };
+
   useEffect(() => {
     const storedUserId = localStorage.getItem("user_id");
     const accessToken = localStorage.getItem("access_token");
@@ -37,12 +43,43 @@ const Index = () => {
 
     startCamera();
 
+    // Poll for incoming calls
+    const callPollInterval = setInterval(() => {
+      if (!storedUserId) return;
+      // Make a GET request to check for incoming calls for the user
+      fetch(`http://127.0.0.1:5000/call-listener/${storedUserId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("API Response:", data); // Log API response for debugging
+
+          if (data && data.receiver_id === parseInt(storedUserId)) {
+            
+
+            // If an incoming call is found, update the state
+            if (data.status == "ringing") {
+              setIsRinging(true); // Show the Ringer component if a call is waiting
+              setIncomingCall(data); // Store incoming call details
+            } else {
+              setIsRinging(false); // Hide the Ringer if no call is waiting
+              setIncomingCall(null);
+            }
+          } else {
+            setIsRinging(false); // Hide the Ringer if no listeners
+            setIncomingCall(null);
+          }
+        })
+        .catch((error) =>
+          console.error("Error fetching call listeners:", error)
+        );
+    }, 5000); // Poll every 5 seconds (adjust as needed)
+
     // Cleanup on component unmount
     return () => {
       if (videoRef.current && videoRef.current.srcObject) {
         let tracks = videoRef.current.srcObject.getTracks();
         tracks.forEach((track) => track.stop());
       }
+      clearInterval(callPollInterval); // Clean up polling on unmount
     };
   }, []);
 
@@ -71,7 +108,9 @@ const Index = () => {
           filter: "brightness(0.5)",
         }}
       ></video>
-      {/* <Ringer /> */}
+      {isRinging && (
+        <Ringer onDecline={handleDecline} incomingCall={incomingCall} />
+      )}
       <div className="main-home-details">
         <div className="float-left-contents">
           <div className="float-main-class">
@@ -93,13 +132,10 @@ const Index = () => {
               </button>
             </div>
           </div>
-          {showContacts && userId && (
-            // Render the Contacts component when showContacts is true and userId is available
-            <ParentComponent userId={userId} />
-          )}
+          {showContacts && userId && <ParentComponent userId={userId} />}
           <div className="calllogs_labelee">Recent Calls</div>
           <div className="call_logs">
-            <CallLogs userId={userId}/>
+            <CallLogs userId={userId} />
           </div>
         </div>
       </div>

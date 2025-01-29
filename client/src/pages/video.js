@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import AgoraRTC from "agora-rtc-sdk-ng";
-
+import { useNavigate } from "react-router-dom";
 const APP_ID = "bc8f887487c04ec28826c3a1c8d70285";
-const TOKEN =
-  "007eJxTYFjSYHS2qJjN1nrW/B13Iy++4BJSi9eovB1m/uFi9xO1TikFhqRkizQLC3MTC/NkA5PUZCMLCyOzZONEw2SLFHMDIwtThkUz0hsCGRksjTYyMTJAIIjPwpCbmJnHwAAA/TwdzQ==";
+const TOKEN = "007eJxTYOhn+nBb3GqPRdylzCNLpRTWbLezTLvI0luf4atbkdqa+UaBISnZIs3CwtzEwjzZwCQ12cjCwsgs2TjRMNkixdzAyMLU58vM9IZARgauc4WsjAwQCOKzMOQmZuYxMAAA844eKg==";
 const CHANNEL = "main";
 
 const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
@@ -14,7 +13,7 @@ const Call = () => {
   const videoStreamRef = useRef(null);
   const [userId, setUserId] = useState(null);
   const [timeElapsed, setTimeElapsed] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const timerInterval = setInterval(() => {
       setTimeElapsed((prevTime) => prevTime + 1);
@@ -54,7 +53,6 @@ const Call = () => {
     }
 
     setUserId(storedUserId); // Set the user_id dynamically from localStorage
-
     // Access the user's webcam
     const startCamera = async () => {
       try {
@@ -125,6 +123,7 @@ const Call = () => {
   const handleUserLeft = (user) => {
     setRemoteUsers((prevState) => {
       const { [user.uid]: _, ...remainingUsers } = prevState;
+      
       return remainingUsers;
     });
     const player = document.getElementById(`user-container-${user.uid}`);
@@ -143,31 +142,32 @@ const Call = () => {
     document.getElementById("join-btn").style.display = "flex";
     document.getElementById("stream-controls").style.display = "none";
     videoStreamRef.current.innerHTML = "";
+    navigate('/');
   };
 
   const toggleMic = async (e) => {
     if (localTracks[0].muted) {
       await localTracks[0].setMuted(false);
-      e.target.innerHTML = '<i class="fa-solid fa-microphone"></i>';
       e.target.classList.add("active");
+      document.getElementById('mute').className = "fa-solid fa-microphone-slash";
     } else {
       await localTracks[0].setMuted(true);
-      e.target.innerHTML = '<i class="fa-solid fa-microphone-slash"></i>';
       e.target.classList.remove("active");
+      document.getElementById('mute').className = "fa-solid fa-microphone";
     }
   };
 
   const toggleCamera = async (e) => {
     if (localTracks[1].muted) {
       await localTracks[1].setMuted(false);
-      e.target.innerHTML = "";
-      e.target.innerHTML = '<i class="fa-solid fa-video"></i>';
       e.target.classList.add("active");
+      document.getElementById('cam').className = "fa-solid fa-video-slash";
+      
     } else {
       await localTracks[1].setMuted(true);
-      e.target.innerHTML = "";
-      e.target.innerHTML = '<i class="fa-solid fa-video-slash"></i>';
       e.target.classList.remove("active");
+      document.getElementById('cam').className = "fa-solid fa-video";
+      
     }
   };
   return (
@@ -196,14 +196,14 @@ const Call = () => {
           >
             <div className="left-icons">
               <button className="btn-left" id="mic-btn" onClick={toggleMic}>
-                <i className="fa-solid fa-microphone"></i>
+                <i id="mute" className="fa-solid fa-microphone"></i>
               </button>
               <button
                 className="btn-left"
                 id="camera-btn"
                 onClick={toggleCamera}
               >
-                <i className="fa-solid fa-video"></i>
+                <i id="cam"  className="fa-solid fa-video"></i>
               </button>
             </div>
 

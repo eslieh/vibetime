@@ -511,3 +511,19 @@ button#join-btn:hover {
   height: 100%;
   width: 100%;
 }
+
+
+@media screen and (max-width:600px){
+  
+.contact_cardpop {
+  background: black;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  padding: 19px;
+  color: white;
+}
+}
