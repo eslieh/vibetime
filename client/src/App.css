@@ -1,0 +1,513 @@
+* {
+  font-family: "Afacad", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-home-details {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  backdrop-filter: blur(17px);
+}
+
+.buttton-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 7px;
+  gap: 7px;
+}
+
+button.details-pull {
+  padding: 5px;
+  width: 50%;
+  border: none;
+  padding: 12px;
+  display: grid;
+  border-radius: 11px;
+  background: #8080808a;
+  color: white;
+}
+button#accept {
+  background: #00f558;
+  color: white;
+}
+button.details-pull i {
+  font-size: 20px;
+}
+.call_logs {
+  display: grid
+;
+  width: fit-content;
+  gap: 5px;
+  background: #8080808a;
+  width: 100%;
+  margin-top: 8px;
+  padding: 15px;
+  border-radius: 13px;
+  overflow: hidden;
+  height: 58vh;
+}
+.float-left-contents {
+  height: 86vh;
+  width: 36%;
+  background: #c7c7c70a;
+  margin: 10px;
+  padding: 17px;
+  border-radius: 13px;
+}
+.icon-logo {
+  font-size: 39px;
+  font-weight: bolder;
+  color: white;
+}
+
+.search-div {
+  display: flex;
+  align-items: center;
+}
+
+button.searchbtn {
+  margin-right: -38px;
+  margin-left: 15px;
+  border: none;
+  background: no-repeat;
+  color: gray;
+  font-size: 18px;
+}
+input.input_area {
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 2px;
+  border-radius: 34px;
+  padding: 9px;
+  width: 100%;
+  padding-left: 44px;
+  font-size: 17px;
+  outline: none;
+}
+
+.float-left-contents {
+  height: 86vh;
+  width: 27%;
+  background: #c7c7c70a;
+  margin: 10px;
+  padding: 17px;
+  border-radius: 13px;
+  min-width: 344px;
+}
+.log_container {
+  display: flex;
+  border-bottom: 1px solid #9f9f9f;
+  padding-bottom: 10px;
+}
+.log_image {
+  width: 19%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initial {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #575050, #898686);
+  display: grid;
+  place-content: center;
+  border-radius: 42px;
+  color: wheat;
+}
+
+.log_detailed {
+  color: white;
+  width: 51%;
+  display: grid;
+  gap: 0px;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.log-time {
+  color: #cbcbcb;
+  font-size: 14px;
+}
+
+.call-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #00dd59;
+  color: white;
+  padding: 6px;
+  width: 30%;
+  border-radius: 7px;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.8s;
+  cursor: pointer;
+}
+
+.call-details {
+  display: flex;
+}
+
+.image-place-ic {
+  width: 17%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.caller-details {
+  width: 43%;
+  justify-content: start;
+  display: grid;
+  padding-left: 10px;
+}
+
+.about-coall {
+  align-items: center;
+  justify-content: start;
+  display: flex;
+  font-weight: 600;
+  font-size: 13px;
+  color: gray;
+}
+
+.user-full-names {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-top: -8px;
+}
+
+.action-buttons {
+  width: 41%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 8px;
+}
+
+button.action-det {
+  width: 50px;
+  height: 50px;
+  border-radius: 38px;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all ease 0.8s;
+}
+
+button#decline {
+  background: red;
+  color: white;
+}
+button#accept {
+  background: #00f558;
+  color: white;
+}
+
+.ringer-pop {
+  position: fixed;
+  top: 5%;
+  left: 32%;
+  width: 37%;
+  background: black;
+  z-index: 50;
+  color: white;
+  padding: 8px;
+  border-radius: 57px;
+  text-align: center;
+  max-width: 336px;
+}
+.Inititalplat {
+  background: linear-gradient(45deg, #575050, #898686);
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-content: center;
+  font-size: 23px;
+  font-weight: 800;
+  border-radius: 41px;
+}
+
+.contact_cardpop {
+  background: black;
+  position: fixed;
+  top: 2%;
+  left: 29%;
+  width: 27%;
+  height: 86%;
+  border-radius: 16px;
+  padding: 19px;
+  color: white;
+}
+
+.calllogs_labelee {
+  color: white;
+  margin-bottom: -7px;
+  padding-left: 4px;
+}
+.exit-bitn {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  color: #00ff56;
+}
+
+h3.label {
+  font-size: 37px;
+}
+input.input-text {
+  width: 92%;
+  border: none;
+  background: no-repeat;
+  font-size: 18px;
+  outline: none;
+  color: white;
+}
+
+.addandsearch {
+  display: flex;
+  align-items: center;
+}
+button.addbtn {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-content: center;
+  font-size: 25px;
+  border: 2px solid #00ff56;
+  border-radius: 25px;
+  background: no-repeat;
+  color: #00ff56;
+}
+
+.addandsearch {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  padding-bottom: 12px;
+}
+
+span.conat {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.contacti_my_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.initiallabel {
+  width: 69px;
+  height: 69px;
+  display: grid;
+  place-content: center;
+  border-radius: 69px;
+  background: linear-gradient(45deg, #575050, #898686);
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.contact-names {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comtact-cont {
+  display: grid;
+  justify-content: center;
+}
+
+.contact-lists {
+  height: 63vh;
+  overflow: auto;
+}
+
+.popup {
+  display: grid;
+  place-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(2px);
+  background: #000000b3;
+}
+
+.popup-content h4 {
+  font-size: 50px;
+  font-weight: bold;
+}
+.popup-content p {
+  font-size: 23px;
+  margin-top: -15px;
+}
+
+.popup-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+video.mini-cam {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 32%;
+  height: 38%;
+  object-fit: cover;
+  border-radius: 10px;
+  transform: scaleX(-1);
+  box-shadow: 0 0 45px gray;
+}
+
+.call-controlss {
+  position: fixed;
+  bottom: 4%;
+  display: flex;
+  left: 29%;
+  width: 35%;
+  background: black;
+  padding: 6px;
+  border-radius: 48px;
+  max-width: 282px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+button.btn-left {
+  padding: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 41px;
+  font-size: 19px;
+  background: white;
+  border: none;
+  transition: all ease 0.8s;
+  cursor: pointer;
+}
+button.btn-left.active {
+  background: red;
+  color: white;
+}
+
+.call-container {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.left-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 42%;
+}
+
+.runtime-calc {
+  width: 39%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+button#end-red {
+  background: red;
+  color: white;
+}
+
+button.btn-left.active-btn {
+  color: white;
+  background: red;
+  transition: all ease 0.8s;
+}
+
+button#leave-btn {
+  transition: all ease 0.8s;
+  background: red;
+  color: white;
+}
+#join-btn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  font-size: 18px;
+  gap: 9px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  width: 14%;
+  justify-content: center;
+  background: black;
+  border: none;
+  color: white;
+  border-radius: 54px;
+  font-weight: 800;
+  transition: all ease 0.8s;
+}
+button#join-btn:hover {
+    transition: all ease 0.8s;
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+
+#video-streams {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  height: 90vh;
+  margin: 0 auto;
+}
+
+.ministream {
+  position: fixed;
+  bottom: 4%;
+  height: 36%;
+  width: 28%;
+  right: 5%;
+  border: none;
+  box-shadow: 0 0 15px gray;
+  border-radius: 5px;
+  z-index: 500;
+}
+
+.stream-home-details {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  backdrop-filter: blur(17px);
+  z-index: 5;
+}
+.video-container {
+  max-height: 100%;
+  border: none;
+  background-color: #203a49;
+  height: 100vh;
+}
+
+.video-player {
+  height: 100%;
+  width: 100%;
+}
