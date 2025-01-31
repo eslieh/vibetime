@@ -38,7 +38,7 @@ const Auth = () => {
     console.log(payload);
 
     try {
-      const response = await axios.post(`http://127.0.0.1:5000${endpoint}`, payload);
+      const response = await axios.post(`https://s4h0dqdd-5000.uks1.devtunnels.ms${endpoint}`, payload);
       const { user_id, access_token } = response.data;
 
       // Store data in localStorage

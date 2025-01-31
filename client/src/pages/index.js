@@ -47,7 +47,7 @@ const Index = () => {
     const callPollInterval = setInterval(() => {
       if (!storedUserId) return;
       // Make a GET request to check for incoming calls for the user
-      fetch(`http://127.0.0.1:5000/call-listener/${storedUserId}`)
+      fetch(`https://s4h0dqdd-5000.uks1.devtunnels.ms/call-listener/${storedUserId}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("API Response:", data); // Log API response for debugging

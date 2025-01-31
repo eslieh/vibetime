@@ -6,7 +6,7 @@ const CallLogs = ({ userId }) => {
 
   useEffect(() => {
     // Fetch call logs from the API
-    fetch(`http://127.0.0.1:5000/call-logs/${userId}`)
+    fetch(`https://s4h0dqdd-5000.uks1.devtunnels.ms/call-logs/${userId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

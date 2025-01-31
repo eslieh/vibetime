@@ -34,7 +34,7 @@ const Ringer = ({ onDecline, incomingCall }) => {
 
     const updateCallStatus = async (status) => {
         try {
-            const response = await axios.delete(`http://127.0.0.1:5000/call-listener/${incomingCall.id}`, {
+            const response = await axios.delete(`https://s4h0dqdd-5000.uks1.devtunnels.ms/call-listener/${incomingCall.id}`, {
                 status: status, // Update the status based on the action (accept/reject)
             });
             console.log("Call status updated:", response.data);

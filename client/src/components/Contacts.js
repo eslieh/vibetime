@@ -13,7 +13,7 @@ const Contacts = ({ userId, onClose }) => {
 
   // Fetch contacts from the API
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/users")
+    fetch("https://s4h0dqdd-5000.uks1.devtunnels.ms/users")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -59,7 +59,7 @@ const Contacts = ({ userId, onClose }) => {
     };
 
     // First, post the CallListener data
-    fetch("http://127.0.0.1:5000/call-listener", {
+    fetch("https://s4h0dqdd-5000.uks1.devtunnels.ms/call-listener", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const Contacts = ({ userId, onClose }) => {
       })
       .then(() => {
         // Then, post the CallLog data
-        return fetch("http://127.0.0.1:5000/call-log", {
+        return fetch("https://s4h0dqdd-5000.uks1.devtunnels.ms/call-log", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
