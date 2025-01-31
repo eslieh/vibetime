@@ -93,7 +93,7 @@ const Contacts = ({ userId, onClose }) => {
       })
       .then(() => {
         // Navigate to the video call page with the receiver's ID
-        // navigate(`/video/${selectedContact.id}`);
+        navigate(`/video/${selectedContact.id}`);
       })
       .catch((error) => {
         console.error("Error saving call data:", error);
