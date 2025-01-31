@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import AgoraRTC from "agora-rtc-sdk-ng";
 import { useNavigate } from "react-router-dom";
 const APP_ID = "bc8f887487c04ec28826c3a1c8d70285";
-const TOKEN = "007eJxTYOhn+nBb3GqPRdylzCNLpRTWbLezTLvI0luf4atbkdqa+UaBISnZIs3CwtzEwjzZwCQ12cjCwsgs2TjRMNkixdzAyMLU58vM9IZARgauc4WsjAwQCOKzMOQmZuYxMAAA844eKg==";
+const TOKEN = "007eJxTYEh8xvb49D0G0Yrwox5GkxMYGZcfeBSp7jF72YqzH40zmo8rMCQlW6RZWJibWJgnG5ikJhtZWBiZJRsnGiZbpJgbGFmYVqXPSW8IZGSY1LmDiZEBAkF8FobcxMw8BgYAOOgfTA==";
 const CHANNEL = "main";
 
 const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
